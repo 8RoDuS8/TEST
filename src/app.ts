@@ -7,7 +7,7 @@ import { readFileSync } from 'fs';
 import appConfig from './config/appConfig';
 import cors from 'cors';
 import { jsonPayload, notFound } from './utils/payloads';
-const PORT = 5000;
+const PORT = 8080;
 
 
 const app = express();
