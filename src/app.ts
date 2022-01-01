@@ -7,7 +7,7 @@ import { readFileSync } from 'fs';
 import appConfig from './config/appConfig';
 import cors from 'cors';
 import { jsonPayload, notFound } from './utils/payloads';
-const PORT = 8080;
+const PORT = 5000;
 
 
 const app = express();
@@ -30,9 +30,9 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
 
 
 https.createServer({
-    key: readFileSync(path.join(__dirname, "key.pem")),
-    cert: readFileSync(path.join(__dirname, "cert.pem")),
+    key: readFileSync(path.join(__dirname, "..", "key.pem")),
+    cert: readFileSync(path.join(__dirname, "..", "cert.pem")),
     passphrase: appConfig.sslPassphrase
-}, app).listen(PORT, () => {
+}, app).listen(process.env.PORT || PORT, () => {
     console.log(`server started on port ${PORT}`);
 })
